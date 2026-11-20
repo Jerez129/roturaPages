@@ -228,7 +228,7 @@ button:disabled,.btn:disabled{opacity:.45;cursor:not-allowed;filter:none}
 .bulk label{display:inline-flex;gap:6px;align-items:center}
 .who-sel{display:inline-flex;gap:8px;align-items:center}
 .editor textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--axis);border-radius:4px;padding:6px 9px;width:280px;max-width:100%;min-height:90px}
-td.wrap{white-space:normal;min-width:180px;max-width:320px;overflow-wrap:anywhere}
+td.wr{white-space:normal;min-width:180px;max-width:320px;overflow-wrap:anywhere}
 table.reps{min-width:1100px}
 @media (max-width:620px){ .rep{grid-template-columns:22px minmax(0,1fr)} .acts{grid-column:1/-1;flex-direction:row;flex-wrap:wrap} }
 </style>
@@ -506,7 +506,7 @@ function renderRep(){
   var h='<section class="card"><div class="sechead"><div><h2>Reportes · '+esc(periodLabel())+'</h2><p class="sub">'+plural(list.length,'reporte','reportes')+'; '+fN(t.u)+' unidades sin contar rechazados.</p></div>'+
     '<div class="tools"><label class="vh" for="repQ">Buscar</label><input type="search" id="repQ" placeholder="Buscar…" value="'+esc(S.rq)+'"><button type="button" id="csvBtn">Descargar CSV</button></div></div>';
   h+='<div class="scroll" style="margin-top:10px"><table class="reps"><thead><tr>'+COLS.map(function(c){ return '<th data-sort="'+c[0]+'"'+(c[0]==='u'?' class="r"':'')+(k===c[0]?' aria-sort="'+(dir>0?'ascending':'descending')+'"':'')+'>'+c[1]+'</th>'; }).join('')+'</tr></thead><tbody>';
-  h+=list.slice(0,1000).map(function(r){ return '<tr><td>'+fDateY(r.d)+'</td><td>'+esc(r.ruta)+'</td><td>'+esc(r.cli)+(r.cn?'<br><small class="dim">'+esc(r.cn)+'</small>':'')+'</td><td>'+esc(r.area)+'</td><td>'+esc(r.causa)+'</td><td>'+esc(r.como)+'</td><td>'+esc(r.sku)+'</td><td>'+esc(r.lote)+'</td><td class="r">'+fN(r.u)+'</td><td>'+esc(r.sup)+'</td><td>'+stTag(r.e)+'</td><td class="wrap">'+esc(r.com)+'</td></tr>'; }).join('');
+  h+=list.slice(0,1000).map(function(r){ return '<tr><td>'+fDateY(r.d)+'</td><td>'+esc(r.ruta)+'</td><td>'+esc(r.cli)+(r.cn?'<br><small class="dim">'+esc(r.cn)+'</small>':'')+'</td><td>'+esc(r.area)+'</td><td>'+esc(r.causa)+'</td><td>'+esc(r.como)+'</td><td>'+esc(r.sku)+'</td><td>'+esc(r.lote)+'</td><td class="r">'+fN(r.u)+'</td><td>'+esc(r.sup)+'</td><td>'+stTag(r.e)+'</td><td class="wr">'+esc(r.com)+'</td></tr>'; }).join('');
   h+='</tbody></table></div>'+(list.length>1000?'<p class="sub">Se muestran 1.000 de '+list.length+'; el CSV trae todos.</p>':'')+'</section>';
   document.getElementById('vRep').innerHTML=h;
 }
